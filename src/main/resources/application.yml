@@ -1,0 +1,39 @@
+# For Micronaut
+micronaut:
+  application:
+    name: alarmo
+  server:
+    port: ${PORT:8080}
+## For SpringApplication
+#server:
+#  port: ${PORT:8080}
+elide:
+  json-api:
+    path: /api/v1
+    enabled: true
+  graphql:
+    path: /graphql/api/v1
+    enabled: true
+  swagger:
+    path: /doc
+    enabled: true
+    version: "1.0"
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:${POSTGRES_PORT:5432}/${POSTGRES_DB:postgres}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    driverClassName: org.postgresql.Driver
